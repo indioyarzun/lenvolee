@@ -9,7 +9,15 @@ export const getUrl = (token: string) => {
 };
 
 export const getPicture = (_picture?: number | Media | null) => {
-  const picture = _picture as Media;
+  let picture: Media;
+  if (!_picture) {
+    picture = {
+      url: "",
+      alt: "",
+    } as Media;
+  } else {
+    picture = _picture as Media;
+  }
   picture.url = `${getUrl(process.env.BLOB_READ_WRITE_TOKEN ?? "")}/${picture?.prefix}/${picture?.filename}`;
 
   return picture;
