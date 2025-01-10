@@ -1443,7 +1443,7 @@
     to-snake-case "1.0.0"
     uuid "9.0.0"
 
-"@payloadcms/email-resend@^3.15.1":
+"@payloadcms/email-resend@3.15.1":
   version "3.15.1"
   resolved "https://registry.yarnpkg.com/@payloadcms/email-resend/-/email-resend-3.15.1.tgz#1665cb43cd7a5cef5301f42b9ebec9a87d218d39"
   integrity sha512-ruExnL4S2AJLuIDdPc+KNm0RnCDNA9ZFxcKWTMOuoNcr+NibPr+2Wez9hvSeZbmCAjcfBUbG2xZEGMlAbrTqSA==

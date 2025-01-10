@@ -17,8 +17,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE IF NOT EXISTS "honeys" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"title" varchar,
-  	"slug" varchar,
   	"picture_id" integer,
+  	"available" boolean DEFAULT false,
   	"description" jsonb,
   	"weight" varchar,
   	"price" varchar,
@@ -39,8 +39,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"id" serial PRIMARY KEY NOT NULL,
   	"parent_id" integer,
   	"version_title" varchar,
-  	"version_slug" varchar,
   	"version_picture_id" integer,
+  	"version_available" boolean DEFAULT false,
   	"version_description" jsonb,
   	"version_weight" varchar,
   	"version_price" varchar,
@@ -149,6 +149,16 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
   
+  CREATE TABLE IF NOT EXISTS "home_blocks_seo" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"title" varchar DEFAULT '',
+  	"description" varchar DEFAULT '',
+  	"block_name" varchar
+  );
+  
   CREATE TABLE IF NOT EXISTS "home" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"title" varchar,
@@ -157,6 +167,17 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_status" "enum_home_status" DEFAULT 'draft',
   	"updated_at" timestamp(3) with time zone,
   	"created_at" timestamp(3) with time zone
+  );
+  
+  CREATE TABLE IF NOT EXISTS "_home_v_blocks_seo" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"title" varchar DEFAULT '',
+  	"description" varchar DEFAULT '',
+  	"_uuid" varchar,
+  	"block_name" varchar
   );
   
   CREATE TABLE IF NOT EXISTS "_home_v" (
@@ -173,12 +194,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"autosave" boolean
   );
   
-  CREATE TABLE IF NOT EXISTS "honeyPage_honeys" (
+  CREATE TABLE IF NOT EXISTS "honeyPage_blocks_seo" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
-  	"available" boolean DEFAULT false,
-  	"honey_id" integer
+  	"title" varchar DEFAULT '',
+  	"description" varchar DEFAULT '',
+  	"block_name" varchar
   );
   
   CREATE TABLE IF NOT EXISTS "honeyPage" (
@@ -190,13 +213,15 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"created_at" timestamp(3) with time zone
   );
   
-  CREATE TABLE IF NOT EXISTS "_honeyPage_v_version_honeys" (
+  CREATE TABLE IF NOT EXISTS "_honeyPage_v_blocks_seo" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
   	"id" serial PRIMARY KEY NOT NULL,
-  	"available" boolean DEFAULT false,
-  	"honey_id" integer,
-  	"_uuid" varchar
+  	"title" varchar DEFAULT '',
+  	"description" varchar DEFAULT '',
+  	"_uuid" varchar,
+  	"block_name" varchar
   );
   
   CREATE TABLE IF NOT EXISTS "_honeyPage_v" (
@@ -222,6 +247,16 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"block_name" varchar
   );
   
+  CREATE TABLE IF NOT EXISTS "course_blocks_seo" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"title" varchar DEFAULT '',
+  	"description" varchar DEFAULT '',
+  	"block_name" varchar
+  );
+  
   CREATE TABLE IF NOT EXISTS "course" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"title" varchar,
@@ -238,6 +273,17 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"id" serial PRIMARY KEY NOT NULL,
   	"description" jsonb,
   	"picture_id" integer,
+  	"_uuid" varchar,
+  	"block_name" varchar
+  );
+  
+  CREATE TABLE IF NOT EXISTS "_course_v_blocks_seo" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"title" varchar DEFAULT '',
+  	"description" varchar DEFAULT '',
   	"_uuid" varchar,
   	"block_name" varchar
   );
@@ -265,6 +311,16 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"block_name" varchar
   );
   
+  CREATE TABLE IF NOT EXISTS "farming_blocks_seo" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"title" varchar DEFAULT '',
+  	"description" varchar DEFAULT '',
+  	"block_name" varchar
+  );
+  
   CREATE TABLE IF NOT EXISTS "farming" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"title" varchar,
@@ -285,6 +341,17 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"block_name" varchar
   );
   
+  CREATE TABLE IF NOT EXISTS "_farming_v_blocks_seo" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"title" varchar DEFAULT '',
+  	"description" varchar DEFAULT '',
+  	"_uuid" varchar,
+  	"block_name" varchar
+  );
+  
   CREATE TABLE IF NOT EXISTS "_farming_v" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"version_title" varchar,
@@ -298,6 +365,16 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"autosave" boolean
   );
   
+  CREATE TABLE IF NOT EXISTS "contact_blocks_seo" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"title" varchar DEFAULT '',
+  	"description" varchar DEFAULT '',
+  	"block_name" varchar
+  );
+  
   CREATE TABLE IF NOT EXISTS "contact" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"title" varchar,
@@ -305,6 +382,17 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_status" "enum_contact_status" DEFAULT 'draft',
   	"updated_at" timestamp(3) with time zone,
   	"created_at" timestamp(3) with time zone
+  );
+  
+  CREATE TABLE IF NOT EXISTS "_contact_v_blocks_seo" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"_path" text NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"title" varchar DEFAULT '',
+  	"description" varchar DEFAULT '',
+  	"_uuid" varchar,
+  	"block_name" varchar
   );
   
   CREATE TABLE IF NOT EXISTS "_contact_v" (
@@ -411,7 +499,19 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   END $$;
   
   DO $$ BEGIN
+   ALTER TABLE "home_blocks_seo" ADD CONSTRAINT "home_blocks_seo_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."home"("id") ON DELETE cascade ON UPDATE no action;
+  EXCEPTION
+   WHEN duplicate_object THEN null;
+  END $$;
+  
+  DO $$ BEGIN
    ALTER TABLE "home" ADD CONSTRAINT "home_picture_id_media_id_fk" FOREIGN KEY ("picture_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  EXCEPTION
+   WHEN duplicate_object THEN null;
+  END $$;
+  
+  DO $$ BEGIN
+   ALTER TABLE "_home_v_blocks_seo" ADD CONSTRAINT "_home_v_blocks_seo_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_home_v"("id") ON DELETE cascade ON UPDATE no action;
   EXCEPTION
    WHEN duplicate_object THEN null;
   END $$;
@@ -423,13 +523,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   END $$;
   
   DO $$ BEGIN
-   ALTER TABLE "honeyPage_honeys" ADD CONSTRAINT "honeyPage_honeys_honey_id_honeys_id_fk" FOREIGN KEY ("honey_id") REFERENCES "public"."honeys"("id") ON DELETE set null ON UPDATE no action;
-  EXCEPTION
-   WHEN duplicate_object THEN null;
-  END $$;
-  
-  DO $$ BEGIN
-   ALTER TABLE "honeyPage_honeys" ADD CONSTRAINT "honeyPage_honeys_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."honeyPage"("id") ON DELETE cascade ON UPDATE no action;
+   ALTER TABLE "honeyPage_blocks_seo" ADD CONSTRAINT "honeyPage_blocks_seo_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."honeyPage"("id") ON DELETE cascade ON UPDATE no action;
   EXCEPTION
    WHEN duplicate_object THEN null;
   END $$;
@@ -441,13 +535,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   END $$;
   
   DO $$ BEGIN
-   ALTER TABLE "_honeyPage_v_version_honeys" ADD CONSTRAINT "_honeyPage_v_version_honeys_honey_id_honeys_id_fk" FOREIGN KEY ("honey_id") REFERENCES "public"."honeys"("id") ON DELETE set null ON UPDATE no action;
-  EXCEPTION
-   WHEN duplicate_object THEN null;
-  END $$;
-  
-  DO $$ BEGIN
-   ALTER TABLE "_honeyPage_v_version_honeys" ADD CONSTRAINT "_honeyPage_v_version_honeys_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_honeyPage_v"("id") ON DELETE cascade ON UPDATE no action;
+   ALTER TABLE "_honeyPage_v_blocks_seo" ADD CONSTRAINT "_honeyPage_v_blocks_seo_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_honeyPage_v"("id") ON DELETE cascade ON UPDATE no action;
   EXCEPTION
    WHEN duplicate_object THEN null;
   END $$;
@@ -471,6 +559,12 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   END $$;
   
   DO $$ BEGIN
+   ALTER TABLE "course_blocks_seo" ADD CONSTRAINT "course_blocks_seo_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."course"("id") ON DELETE cascade ON UPDATE no action;
+  EXCEPTION
+   WHEN duplicate_object THEN null;
+  END $$;
+  
+  DO $$ BEGIN
    ALTER TABLE "course" ADD CONSTRAINT "course_picture_id_media_id_fk" FOREIGN KEY ("picture_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   EXCEPTION
    WHEN duplicate_object THEN null;
@@ -484,6 +578,12 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   DO $$ BEGIN
    ALTER TABLE "_course_v_blocks_content" ADD CONSTRAINT "_course_v_blocks_content_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_course_v"("id") ON DELETE cascade ON UPDATE no action;
+  EXCEPTION
+   WHEN duplicate_object THEN null;
+  END $$;
+  
+  DO $$ BEGIN
+   ALTER TABLE "_course_v_blocks_seo" ADD CONSTRAINT "_course_v_blocks_seo_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_course_v"("id") ON DELETE cascade ON UPDATE no action;
   EXCEPTION
    WHEN duplicate_object THEN null;
   END $$;
@@ -507,6 +607,12 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   END $$;
   
   DO $$ BEGIN
+   ALTER TABLE "farming_blocks_seo" ADD CONSTRAINT "farming_blocks_seo_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."farming"("id") ON DELETE cascade ON UPDATE no action;
+  EXCEPTION
+   WHEN duplicate_object THEN null;
+  END $$;
+  
+  DO $$ BEGIN
    ALTER TABLE "farming" ADD CONSTRAINT "farming_picture_id_media_id_fk" FOREIGN KEY ("picture_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   EXCEPTION
    WHEN duplicate_object THEN null;
@@ -525,13 +631,31 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   END $$;
   
   DO $$ BEGIN
+   ALTER TABLE "_farming_v_blocks_seo" ADD CONSTRAINT "_farming_v_blocks_seo_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_farming_v"("id") ON DELETE cascade ON UPDATE no action;
+  EXCEPTION
+   WHEN duplicate_object THEN null;
+  END $$;
+  
+  DO $$ BEGIN
    ALTER TABLE "_farming_v" ADD CONSTRAINT "_farming_v_version_picture_id_media_id_fk" FOREIGN KEY ("version_picture_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   EXCEPTION
    WHEN duplicate_object THEN null;
   END $$;
   
   DO $$ BEGIN
+   ALTER TABLE "contact_blocks_seo" ADD CONSTRAINT "contact_blocks_seo_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."contact"("id") ON DELETE cascade ON UPDATE no action;
+  EXCEPTION
+   WHEN duplicate_object THEN null;
+  END $$;
+  
+  DO $$ BEGIN
    ALTER TABLE "contact" ADD CONSTRAINT "contact_picture_id_media_id_fk" FOREIGN KEY ("picture_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  EXCEPTION
+   WHEN duplicate_object THEN null;
+  END $$;
+  
+  DO $$ BEGIN
+   ALTER TABLE "_contact_v_blocks_seo" ADD CONSTRAINT "_contact_v_blocks_seo_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_contact_v"("id") ON DELETE cascade ON UPDATE no action;
   EXCEPTION
    WHEN duplicate_object THEN null;
   END $$;
@@ -595,22 +719,28 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "payload_preferences_rels_users_id_idx" ON "payload_preferences_rels" USING btree ("users_id");
   CREATE INDEX IF NOT EXISTS "payload_migrations_updated_at_idx" ON "payload_migrations" USING btree ("updated_at");
   CREATE INDEX IF NOT EXISTS "payload_migrations_created_at_idx" ON "payload_migrations" USING btree ("created_at");
+  CREATE INDEX IF NOT EXISTS "home_blocks_seo_order_idx" ON "home_blocks_seo" USING btree ("_order");
+  CREATE INDEX IF NOT EXISTS "home_blocks_seo_parent_id_idx" ON "home_blocks_seo" USING btree ("_parent_id");
+  CREATE INDEX IF NOT EXISTS "home_blocks_seo_path_idx" ON "home_blocks_seo" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "home_picture_idx" ON "home" USING btree ("picture_id");
   CREATE INDEX IF NOT EXISTS "home__status_idx" ON "home" USING btree ("_status");
+  CREATE INDEX IF NOT EXISTS "_home_v_blocks_seo_order_idx" ON "_home_v_blocks_seo" USING btree ("_order");
+  CREATE INDEX IF NOT EXISTS "_home_v_blocks_seo_parent_id_idx" ON "_home_v_blocks_seo" USING btree ("_parent_id");
+  CREATE INDEX IF NOT EXISTS "_home_v_blocks_seo_path_idx" ON "_home_v_blocks_seo" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "_home_v_version_version_picture_idx" ON "_home_v" USING btree ("version_picture_id");
   CREATE INDEX IF NOT EXISTS "_home_v_version_version__status_idx" ON "_home_v" USING btree ("version__status");
   CREATE INDEX IF NOT EXISTS "_home_v_created_at_idx" ON "_home_v" USING btree ("created_at");
   CREATE INDEX IF NOT EXISTS "_home_v_updated_at_idx" ON "_home_v" USING btree ("updated_at");
   CREATE INDEX IF NOT EXISTS "_home_v_latest_idx" ON "_home_v" USING btree ("latest");
   CREATE INDEX IF NOT EXISTS "_home_v_autosave_idx" ON "_home_v" USING btree ("autosave");
-  CREATE INDEX IF NOT EXISTS "honeyPage_honeys_order_idx" ON "honeyPage_honeys" USING btree ("_order");
-  CREATE INDEX IF NOT EXISTS "honeyPage_honeys_parent_id_idx" ON "honeyPage_honeys" USING btree ("_parent_id");
-  CREATE INDEX IF NOT EXISTS "honeyPage_honeys_honey_idx" ON "honeyPage_honeys" USING btree ("honey_id");
+  CREATE INDEX IF NOT EXISTS "honeyPage_blocks_seo_order_idx" ON "honeyPage_blocks_seo" USING btree ("_order");
+  CREATE INDEX IF NOT EXISTS "honeyPage_blocks_seo_parent_id_idx" ON "honeyPage_blocks_seo" USING btree ("_parent_id");
+  CREATE INDEX IF NOT EXISTS "honeyPage_blocks_seo_path_idx" ON "honeyPage_blocks_seo" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "honeyPage_picture_idx" ON "honeyPage" USING btree ("picture_id");
   CREATE INDEX IF NOT EXISTS "honeyPage__status_idx" ON "honeyPage" USING btree ("_status");
-  CREATE INDEX IF NOT EXISTS "_honeyPage_v_version_honeys_order_idx" ON "_honeyPage_v_version_honeys" USING btree ("_order");
-  CREATE INDEX IF NOT EXISTS "_honeyPage_v_version_honeys_parent_id_idx" ON "_honeyPage_v_version_honeys" USING btree ("_parent_id");
-  CREATE INDEX IF NOT EXISTS "_honeyPage_v_version_honeys_honey_idx" ON "_honeyPage_v_version_honeys" USING btree ("honey_id");
+  CREATE INDEX IF NOT EXISTS "_honeyPage_v_blocks_seo_order_idx" ON "_honeyPage_v_blocks_seo" USING btree ("_order");
+  CREATE INDEX IF NOT EXISTS "_honeyPage_v_blocks_seo_parent_id_idx" ON "_honeyPage_v_blocks_seo" USING btree ("_parent_id");
+  CREATE INDEX IF NOT EXISTS "_honeyPage_v_blocks_seo_path_idx" ON "_honeyPage_v_blocks_seo" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "_honeyPage_v_version_version_picture_idx" ON "_honeyPage_v" USING btree ("version_picture_id");
   CREATE INDEX IF NOT EXISTS "_honeyPage_v_version_version__status_idx" ON "_honeyPage_v" USING btree ("version__status");
   CREATE INDEX IF NOT EXISTS "_honeyPage_v_created_at_idx" ON "_honeyPage_v" USING btree ("created_at");
@@ -621,12 +751,18 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "course_blocks_content_parent_id_idx" ON "course_blocks_content" USING btree ("_parent_id");
   CREATE INDEX IF NOT EXISTS "course_blocks_content_path_idx" ON "course_blocks_content" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "course_blocks_content_picture_idx" ON "course_blocks_content" USING btree ("picture_id");
+  CREATE INDEX IF NOT EXISTS "course_blocks_seo_order_idx" ON "course_blocks_seo" USING btree ("_order");
+  CREATE INDEX IF NOT EXISTS "course_blocks_seo_parent_id_idx" ON "course_blocks_seo" USING btree ("_parent_id");
+  CREATE INDEX IF NOT EXISTS "course_blocks_seo_path_idx" ON "course_blocks_seo" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "course_picture_idx" ON "course" USING btree ("picture_id");
   CREATE INDEX IF NOT EXISTS "course__status_idx" ON "course" USING btree ("_status");
   CREATE INDEX IF NOT EXISTS "_course_v_blocks_content_order_idx" ON "_course_v_blocks_content" USING btree ("_order");
   CREATE INDEX IF NOT EXISTS "_course_v_blocks_content_parent_id_idx" ON "_course_v_blocks_content" USING btree ("_parent_id");
   CREATE INDEX IF NOT EXISTS "_course_v_blocks_content_path_idx" ON "_course_v_blocks_content" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "_course_v_blocks_content_picture_idx" ON "_course_v_blocks_content" USING btree ("picture_id");
+  CREATE INDEX IF NOT EXISTS "_course_v_blocks_seo_order_idx" ON "_course_v_blocks_seo" USING btree ("_order");
+  CREATE INDEX IF NOT EXISTS "_course_v_blocks_seo_parent_id_idx" ON "_course_v_blocks_seo" USING btree ("_parent_id");
+  CREATE INDEX IF NOT EXISTS "_course_v_blocks_seo_path_idx" ON "_course_v_blocks_seo" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "_course_v_version_version_picture_idx" ON "_course_v" USING btree ("version_picture_id");
   CREATE INDEX IF NOT EXISTS "_course_v_version_version__status_idx" ON "_course_v" USING btree ("version__status");
   CREATE INDEX IF NOT EXISTS "_course_v_created_at_idx" ON "_course_v" USING btree ("created_at");
@@ -637,20 +773,32 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "farming_blocks_content_parent_id_idx" ON "farming_blocks_content" USING btree ("_parent_id");
   CREATE INDEX IF NOT EXISTS "farming_blocks_content_path_idx" ON "farming_blocks_content" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "farming_blocks_content_picture_idx" ON "farming_blocks_content" USING btree ("picture_id");
+  CREATE INDEX IF NOT EXISTS "farming_blocks_seo_order_idx" ON "farming_blocks_seo" USING btree ("_order");
+  CREATE INDEX IF NOT EXISTS "farming_blocks_seo_parent_id_idx" ON "farming_blocks_seo" USING btree ("_parent_id");
+  CREATE INDEX IF NOT EXISTS "farming_blocks_seo_path_idx" ON "farming_blocks_seo" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "farming_picture_idx" ON "farming" USING btree ("picture_id");
   CREATE INDEX IF NOT EXISTS "farming__status_idx" ON "farming" USING btree ("_status");
   CREATE INDEX IF NOT EXISTS "_farming_v_blocks_content_order_idx" ON "_farming_v_blocks_content" USING btree ("_order");
   CREATE INDEX IF NOT EXISTS "_farming_v_blocks_content_parent_id_idx" ON "_farming_v_blocks_content" USING btree ("_parent_id");
   CREATE INDEX IF NOT EXISTS "_farming_v_blocks_content_path_idx" ON "_farming_v_blocks_content" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "_farming_v_blocks_content_picture_idx" ON "_farming_v_blocks_content" USING btree ("picture_id");
+  CREATE INDEX IF NOT EXISTS "_farming_v_blocks_seo_order_idx" ON "_farming_v_blocks_seo" USING btree ("_order");
+  CREATE INDEX IF NOT EXISTS "_farming_v_blocks_seo_parent_id_idx" ON "_farming_v_blocks_seo" USING btree ("_parent_id");
+  CREATE INDEX IF NOT EXISTS "_farming_v_blocks_seo_path_idx" ON "_farming_v_blocks_seo" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "_farming_v_version_version_picture_idx" ON "_farming_v" USING btree ("version_picture_id");
   CREATE INDEX IF NOT EXISTS "_farming_v_version_version__status_idx" ON "_farming_v" USING btree ("version__status");
   CREATE INDEX IF NOT EXISTS "_farming_v_created_at_idx" ON "_farming_v" USING btree ("created_at");
   CREATE INDEX IF NOT EXISTS "_farming_v_updated_at_idx" ON "_farming_v" USING btree ("updated_at");
   CREATE INDEX IF NOT EXISTS "_farming_v_latest_idx" ON "_farming_v" USING btree ("latest");
   CREATE INDEX IF NOT EXISTS "_farming_v_autosave_idx" ON "_farming_v" USING btree ("autosave");
+  CREATE INDEX IF NOT EXISTS "contact_blocks_seo_order_idx" ON "contact_blocks_seo" USING btree ("_order");
+  CREATE INDEX IF NOT EXISTS "contact_blocks_seo_parent_id_idx" ON "contact_blocks_seo" USING btree ("_parent_id");
+  CREATE INDEX IF NOT EXISTS "contact_blocks_seo_path_idx" ON "contact_blocks_seo" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "contact_picture_idx" ON "contact" USING btree ("picture_id");
   CREATE INDEX IF NOT EXISTS "contact__status_idx" ON "contact" USING btree ("_status");
+  CREATE INDEX IF NOT EXISTS "_contact_v_blocks_seo_order_idx" ON "_contact_v_blocks_seo" USING btree ("_order");
+  CREATE INDEX IF NOT EXISTS "_contact_v_blocks_seo_parent_id_idx" ON "_contact_v_blocks_seo" USING btree ("_parent_id");
+  CREATE INDEX IF NOT EXISTS "_contact_v_blocks_seo_path_idx" ON "_contact_v_blocks_seo" USING btree ("_path");
   CREATE INDEX IF NOT EXISTS "_contact_v_version_version_picture_idx" ON "_contact_v" USING btree ("version_picture_id");
   CREATE INDEX IF NOT EXISTS "_contact_v_version_version__status_idx" ON "_contact_v" USING btree ("version__status");
   CREATE INDEX IF NOT EXISTS "_contact_v_created_at_idx" ON "_contact_v" USING btree ("created_at");
@@ -674,21 +822,29 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "payload_preferences" CASCADE;
   DROP TABLE "payload_preferences_rels" CASCADE;
   DROP TABLE "payload_migrations" CASCADE;
+  DROP TABLE "home_blocks_seo" CASCADE;
   DROP TABLE "home" CASCADE;
+  DROP TABLE "_home_v_blocks_seo" CASCADE;
   DROP TABLE "_home_v" CASCADE;
-  DROP TABLE "honeyPage_honeys" CASCADE;
+  DROP TABLE "honeyPage_blocks_seo" CASCADE;
   DROP TABLE "honeyPage" CASCADE;
-  DROP TABLE "_honeyPage_v_version_honeys" CASCADE;
+  DROP TABLE "_honeyPage_v_blocks_seo" CASCADE;
   DROP TABLE "_honeyPage_v" CASCADE;
   DROP TABLE "course_blocks_content" CASCADE;
+  DROP TABLE "course_blocks_seo" CASCADE;
   DROP TABLE "course" CASCADE;
   DROP TABLE "_course_v_blocks_content" CASCADE;
+  DROP TABLE "_course_v_blocks_seo" CASCADE;
   DROP TABLE "_course_v" CASCADE;
   DROP TABLE "farming_blocks_content" CASCADE;
+  DROP TABLE "farming_blocks_seo" CASCADE;
   DROP TABLE "farming" CASCADE;
   DROP TABLE "_farming_v_blocks_content" CASCADE;
+  DROP TABLE "_farming_v_blocks_seo" CASCADE;
   DROP TABLE "_farming_v" CASCADE;
+  DROP TABLE "contact_blocks_seo" CASCADE;
   DROP TABLE "contact" CASCADE;
+  DROP TABLE "_contact_v_blocks_seo" CASCADE;
   DROP TABLE "_contact_v" CASCADE;
   DROP TYPE "public"."enum_honeys_status";
   DROP TYPE "public"."enum__honeys_v_version_status";
