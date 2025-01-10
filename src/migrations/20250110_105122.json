@@ -141,12 +141,8 @@
           "name": "honeys_picture_id_media_id_fk",
           "tableFrom": "honeys",
           "tableTo": "media",
-          "columnsFrom": [
-            "picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -259,12 +255,8 @@
           "name": "honeys_rels_parent_fk",
           "tableFrom": "honeys_rels",
           "tableTo": "honeys",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -272,12 +264,8 @@
           "name": "honeys_rels_flowers_fk",
           "tableFrom": "honeys_rels",
           "tableTo": "flowers",
-          "columnsFrom": [
-            "flowers_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["flowers_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -530,12 +518,8 @@
           "name": "_honeys_v_parent_id_honeys_id_fk",
           "tableFrom": "_honeys_v",
           "tableTo": "honeys",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -543,12 +527,8 @@
           "name": "_honeys_v_version_picture_id_media_id_fk",
           "tableFrom": "_honeys_v",
           "tableTo": "media",
-          "columnsFrom": [
-            "version_picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["version_picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -661,12 +641,8 @@
           "name": "_honeys_v_rels_parent_fk",
           "tableFrom": "_honeys_v_rels",
           "tableTo": "_honeys_v",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -674,12 +650,8 @@
           "name": "_honeys_v_rels_flowers_fk",
           "tableFrom": "_honeys_v_rels",
           "tableTo": "flowers",
-          "columnsFrom": [
-            "flowers_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["flowers_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -891,12 +863,8 @@
           "name": "_flowers_v_parent_id_flowers_id_fk",
           "tableFrom": "_flowers_v",
           "tableTo": "flowers",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -922,6 +890,12 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": true
+        },
+        "prefix": {
+          "name": "prefix",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
@@ -1418,12 +1392,8 @@
           "name": "payload_locked_documents_rels_parent_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "payload_locked_documents",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1431,12 +1401,8 @@
           "name": "payload_locked_documents_rels_honeys_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "honeys",
-          "columnsFrom": [
-            "honeys_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["honeys_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1444,12 +1410,8 @@
           "name": "payload_locked_documents_rels_flowers_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "flowers",
-          "columnsFrom": [
-            "flowers_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["flowers_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1457,12 +1419,8 @@
           "name": "payload_locked_documents_rels_media_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "media",
-          "columnsFrom": [
-            "media_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["media_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1470,12 +1428,8 @@
           "name": "payload_locked_documents_rels_users_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "users",
-          "columnsFrom": [
-            "users_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["users_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1679,12 +1633,8 @@
           "name": "payload_preferences_rels_parent_fk",
           "tableFrom": "payload_preferences_rels",
           "tableTo": "payload_preferences",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1692,12 +1642,8 @@
           "name": "payload_preferences_rels_users_fk",
           "tableFrom": "payload_preferences_rels",
           "tableTo": "users",
-          "columnsFrom": [
-            "users_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["users_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1885,12 +1831,8 @@
           "name": "home_blocks_seo_parent_id_fk",
           "tableFrom": "home_blocks_seo",
           "tableTo": "home",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1987,12 +1929,8 @@
           "name": "home_picture_id_media_id_fk",
           "tableFrom": "home",
           "tableTo": "media",
-          "columnsFrom": [
-            "picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2110,12 +2048,8 @@
           "name": "_home_v_blocks_seo_parent_id_fk",
           "tableFrom": "_home_v_blocks_seo",
           "tableTo": "_home_v",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2298,12 +2232,8 @@
           "name": "_home_v_version_picture_id_media_id_fk",
           "tableFrom": "_home_v",
           "tableTo": "media",
-          "columnsFrom": [
-            "version_picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["version_picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2415,12 +2345,8 @@
           "name": "honeyPage_blocks_seo_parent_id_fk",
           "tableFrom": "honeyPage_blocks_seo",
           "tableTo": "honeyPage",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2511,12 +2437,8 @@
           "name": "honeyPage_picture_id_media_id_fk",
           "tableFrom": "honeyPage",
           "tableTo": "media",
-          "columnsFrom": [
-            "picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2634,12 +2556,8 @@
           "name": "_honeyPage_v_blocks_seo_parent_id_fk",
           "tableFrom": "_honeyPage_v_blocks_seo",
           "tableTo": "_honeyPage_v",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2816,12 +2734,8 @@
           "name": "_honeyPage_v_version_picture_id_media_id_fk",
           "tableFrom": "_honeyPage_v",
           "tableTo": "media",
-          "columnsFrom": [
-            "version_picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["version_picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2946,12 +2860,8 @@
           "name": "course_blocks_content_picture_id_media_id_fk",
           "tableFrom": "course_blocks_content",
           "tableTo": "media",
-          "columnsFrom": [
-            "picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -2959,12 +2869,8 @@
           "name": "course_blocks_content_parent_id_fk",
           "tableFrom": "course_blocks_content",
           "tableTo": "course",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3076,12 +2982,8 @@
           "name": "course_blocks_seo_parent_id_fk",
           "tableFrom": "course_blocks_seo",
           "tableTo": "course",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3172,12 +3074,8 @@
           "name": "course_picture_id_media_id_fk",
           "tableFrom": "course",
           "tableTo": "media",
-          "columnsFrom": [
-            "picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -3308,12 +3206,8 @@
           "name": "_course_v_blocks_content_picture_id_media_id_fk",
           "tableFrom": "_course_v_blocks_content",
           "tableTo": "media",
-          "columnsFrom": [
-            "picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -3321,12 +3215,8 @@
           "name": "_course_v_blocks_content_parent_id_fk",
           "tableFrom": "_course_v_blocks_content",
           "tableTo": "_course_v",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3444,12 +3334,8 @@
           "name": "_course_v_blocks_seo_parent_id_fk",
           "tableFrom": "_course_v_blocks_seo",
           "tableTo": "_course_v",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3626,12 +3512,8 @@
           "name": "_course_v_version_picture_id_media_id_fk",
           "tableFrom": "_course_v",
           "tableTo": "media",
-          "columnsFrom": [
-            "version_picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["version_picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -3756,12 +3638,8 @@
           "name": "farming_blocks_content_picture_id_media_id_fk",
           "tableFrom": "farming_blocks_content",
           "tableTo": "media",
-          "columnsFrom": [
-            "picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -3769,12 +3647,8 @@
           "name": "farming_blocks_content_parent_id_fk",
           "tableFrom": "farming_blocks_content",
           "tableTo": "farming",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3886,12 +3760,8 @@
           "name": "farming_blocks_seo_parent_id_fk",
           "tableFrom": "farming_blocks_seo",
           "tableTo": "farming",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3982,12 +3852,8 @@
           "name": "farming_picture_id_media_id_fk",
           "tableFrom": "farming",
           "tableTo": "media",
-          "columnsFrom": [
-            "picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -4118,12 +3984,8 @@
           "name": "_farming_v_blocks_content_picture_id_media_id_fk",
           "tableFrom": "_farming_v_blocks_content",
           "tableTo": "media",
-          "columnsFrom": [
-            "picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -4131,12 +3993,8 @@
           "name": "_farming_v_blocks_content_parent_id_fk",
           "tableFrom": "_farming_v_blocks_content",
           "tableTo": "_farming_v",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -4254,12 +4112,8 @@
           "name": "_farming_v_blocks_seo_parent_id_fk",
           "tableFrom": "_farming_v_blocks_seo",
           "tableTo": "_farming_v",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -4436,12 +4290,8 @@
           "name": "_farming_v_version_picture_id_media_id_fk",
           "tableFrom": "_farming_v",
           "tableTo": "media",
-          "columnsFrom": [
-            "version_picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["version_picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -4553,12 +4403,8 @@
           "name": "contact_blocks_seo_parent_id_fk",
           "tableFrom": "contact_blocks_seo",
           "tableTo": "contact",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -4649,12 +4495,8 @@
           "name": "contact_picture_id_media_id_fk",
           "tableFrom": "contact",
           "tableTo": "media",
-          "columnsFrom": [
-            "picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -4772,12 +4614,8 @@
           "name": "_contact_v_blocks_seo_parent_id_fk",
           "tableFrom": "_contact_v_blocks_seo",
           "tableTo": "_contact_v",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -4954,12 +4792,8 @@
           "name": "_contact_v_version_picture_id_media_id_fk",
           "tableFrom": "_contact_v",
           "tableTo": "media",
-          "columnsFrom": [
-            "version_picture_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["version_picture_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -4975,98 +4809,62 @@
     "public.enum_honeys_status": {
       "name": "enum_honeys_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum__honeys_v_version_status": {
       "name": "enum__honeys_v_version_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum_home_status": {
       "name": "enum_home_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum__home_v_version_status": {
       "name": "enum__home_v_version_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum_honeyPage_status": {
       "name": "enum_honeyPage_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum__honeyPage_v_version_status": {
       "name": "enum__honeyPage_v_version_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum_course_status": {
       "name": "enum_course_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum__course_v_version_status": {
       "name": "enum__course_v_version_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum_farming_status": {
       "name": "enum_farming_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum__farming_v_version_status": {
       "name": "enum__farming_v_version_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum_contact_status": {
       "name": "enum_contact_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum__contact_v_version_status": {
       "name": "enum__contact_v_version_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     }
   },
   "schemas": {},

@@ -1,4 +1,4 @@
-import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+import { MigrateUpArgs, MigrateDownArgs, sql } from "@payloadcms/db-postgres";
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
@@ -81,6 +81,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE IF NOT EXISTS "media" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"alt" varchar NOT NULL,
+  	"prefix" varchar,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"url" varchar,
@@ -804,10 +805,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "_contact_v_created_at_idx" ON "_contact_v" USING btree ("created_at");
   CREATE INDEX IF NOT EXISTS "_contact_v_updated_at_idx" ON "_contact_v" USING btree ("updated_at");
   CREATE INDEX IF NOT EXISTS "_contact_v_latest_idx" ON "_contact_v" USING btree ("latest");
-  CREATE INDEX IF NOT EXISTS "_contact_v_autosave_idx" ON "_contact_v" USING btree ("autosave");`)
+  CREATE INDEX IF NOT EXISTS "_contact_v_autosave_idx" ON "_contact_v" USING btree ("autosave");`);
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({
+  db,
+  payload,
+  req,
+}: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    DROP TABLE "honeys" CASCADE;
   DROP TABLE "honeys_rels" CASCADE;
@@ -857,5 +862,5 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_farming_status";
   DROP TYPE "public"."enum__farming_v_version_status";
   DROP TYPE "public"."enum_contact_status";
-  DROP TYPE "public"."enum__contact_v_version_status";`)
+  DROP TYPE "public"."enum__contact_v_version_status";`);
 }
