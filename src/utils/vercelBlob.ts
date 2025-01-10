@@ -9,16 +9,17 @@ export const getUrl = (token: string) => {
 };
 
 export const getPicture = (_picture?: number | Media | null) => {
-  let picture: Media;
-  if (!_picture) {
-    picture = {
-      url: "",
-      alt: "",
-    } as Media;
-  } else {
-    picture = _picture as Media;
-  }
-  picture.url = `${getUrl(process.env.BLOB_READ_WRITE_TOKEN ?? "")}/${picture?.prefix}/${picture?.filename}`;
+  // let picture: Media;
+  // if (!_picture) {
+  //   picture = {
+  //     url: "",
+  //     alt: "",
+  //   } as Media;
+  // } else {
+  //   picture = _picture as Media;
+  // }
+  // picture.url = `${getUrl(process.env.BLOB_READ_WRITE_TOKEN ?? "")}/${picture?.prefix}/${picture?.filename}`;
 
-  return picture;
+  // return picture;
+  return _picture as Media;
 };
