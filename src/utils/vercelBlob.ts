@@ -10,7 +10,9 @@ export const getUrl = (token: string) => {
 
 export const getPicture = (_picture?: number | Media | null) => {
   const picture = _picture as Media;
-  picture.url = `${getUrl(process.env.BLOB_READ_WRITE_TOKEN ?? "")}/${picture.prefix}/${picture.filename}`;
+  if (picture) {
+    picture.url = `${getUrl(process.env.BLOB_READ_WRITE_TOKEN ?? "")}/${picture.prefix}/${picture.filename}`;
+  }
 
   return picture;
 };
