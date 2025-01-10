@@ -1,6 +1,7 @@
 import { getPayload } from "payload";
 import config from "@/payload.config";
-import { Flower, Media } from "@/payload-types";
+import { Flower } from "@/payload-types";
+import { getPicture } from "@/utils/vercelBlob";
 
 export const getHome = async ({ draft }: { draft?: string }) => {
   const payload = await getPayload({ config });
@@ -13,7 +14,7 @@ export const getHome = async ({ draft }: { draft?: string }) => {
 
   return {
     ...home,
-    picture: home.picture as Media,
+    picture: getPicture(home.picture),
   };
 };
 
@@ -35,13 +36,13 @@ export const getHoneys = async ({ draft }: { draft?: string }) => {
 
   return {
     ...honeysPage,
-    picture: honeysPage.picture as Media,
+    picture: getPicture(honeysPage.picture),
     honeys: honeys.docs
       .filter((honey) => honey.available)
       .map((honey) => ({
         ...honey,
         flowers: honey.flowers?.map((flower) => flower as Flower),
-        picture: honey.picture as Media,
+        picture: getPicture(honey.picture),
       })),
   };
 };
@@ -57,10 +58,10 @@ export const getCourses = async ({ draft }: { draft?: string }) => {
 
   return {
     ...courses,
-    picture: courses.picture as Media,
+    picture: getPicture(courses.picture),
     content: courses.content?.map((content) => ({
       ...content,
-      picture: content.picture as Media,
+      picture: getPicture(content.picture),
     })),
   };
 };
@@ -76,10 +77,10 @@ export const getFarming = async ({ draft }: { draft?: string }) => {
 
   return {
     ...courses,
-    picture: courses.picture as Media,
+    picture: getPicture(courses.picture),
     content: courses.content?.map((content) => ({
       ...content,
-      picture: content.picture as Media,
+      picture: getPicture(content.picture),
     })),
   };
 };
@@ -95,6 +96,6 @@ export const getContact = async ({ draft }: { draft?: string }) => {
 
   return {
     ...contact,
-    picture: contact.picture as Media,
+    picture: getPicture(contact.picture),
   };
 };

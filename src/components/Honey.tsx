@@ -42,6 +42,7 @@ export default function Honey({
             src={logoBio}
             alt="Agriculture biologique"
             width={40}
+            style={{ height: "auto" }}
             className="self-end pb-2"
           />
           <div className="flex min-h-16 flex-1 flex-row-reverse flex-wrap-reverse items-start gap-1 pb-2 text-xs font-semibold text-white">
