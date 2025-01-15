@@ -44,6 +44,14 @@ export const HoneysPage: GlobalConfig = {
       required: true,
     },
     {
+      name: "description",
+      label: {
+        fr: "Description",
+      },
+      type: "richText",
+      required: true,
+    },
+    {
       name: "seo",
       labels: {
         singular: {

@@ -9,6 +9,7 @@ import { RefreshRouteOnSave } from "@/components/RefreshRouterOnSave";
 import { getHoneys } from "@/api";
 import { getSeo } from "@/utils/seo";
 import { Metadata } from "next";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 
 export async function generateMetadata(): Promise<Metadata> {
   const honeys = await getHoneys({});
@@ -25,8 +26,6 @@ export default async function Honeys({
   const { draft } = await searchParams;
 
   const honeys = await getHoneys({ draft });
-
-  // const honeys = await API.getHoneys();
 
   const flowersList = honeys.honeys?.reduce<string[]>((acc, honey) => {
     acc.push(
@@ -53,6 +52,9 @@ export default async function Honeys({
         />
       </Hero>
       <Title>{honeys.title}</Title>
+      <div className="pt-8">
+        <RichText data={honeys.description} />
+      </div>
 
       <PageClient honeys={honeys} flowers={flowers} />
     </>

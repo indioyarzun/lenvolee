@@ -81,22 +81,9 @@ export interface Honey {
   id: number;
   title: string;
   picture: number | Media;
-  available: boolean;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  visible: boolean;
+  isAvailable: boolean;
+  description?: string | null;
   weight?: string | null;
   price?: string | null;
   flowers?: (number | Flower)[] | null;
@@ -223,7 +210,8 @@ export interface PayloadMigration {
 export interface HoneysSelect<T extends boolean = true> {
   title?: T;
   picture?: T;
-  available?: T;
+  visible?: T;
+  isAvailable?: T;
   description?: T;
   weight?: T;
   price?: T;
@@ -349,6 +337,21 @@ export interface HoneyPage {
   id: number;
   title: string;
   picture: number | Media;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   seo?:
     | {
         title?: string | null;
@@ -457,6 +460,23 @@ export interface Farming {
 export interface Contact {
   id: number;
   title: string;
+  email: string;
+  toSend: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  sended: string;
   picture: number | Media;
   seo?:
     | {
@@ -503,6 +523,7 @@ export interface HomeSelect<T extends boolean = true> {
 export interface HoneyPageSelect<T extends boolean = true> {
   title?: T;
   picture?: T;
+  description?: T;
   seo?:
     | T
     | {
@@ -598,6 +619,9 @@ export interface FarmingSelect<T extends boolean = true> {
  */
 export interface ContactSelect<T extends boolean = true> {
   title?: T;
+  email?: T;
+  toSend?: T;
+  sended?: T;
   picture?: T;
   seo?:
     | T

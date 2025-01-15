@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from "payload";
 
 export const Flowers: CollectionConfig = {
   access: {
@@ -8,24 +8,24 @@ export const Flowers: CollectionConfig = {
     maxPerDoc: 10,
   },
   admin: {
-    useAsTitle: "name"
+    useAsTitle: "name",
   },
-  slug: 'flowers',
+  slug: "flowers",
   labels: {
     singular: {
-      fr: 'Fleur',
+      fr: "Fleur",
     },
     plural: {
-      fr: 'Fleurs',
+      fr: "Fleurs",
     },
   },
   dbName: "flowers",
   fields: [
     {
-      name: 'name',
-      label: "nom",
-      type: 'text',
+      name: "name",
+      label: "Nom",
+      type: "text",
       required: true,
-    }
-  ]
-}
+    },
+  ],
+};

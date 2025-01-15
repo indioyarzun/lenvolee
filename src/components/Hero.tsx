@@ -8,7 +8,7 @@ const Hero: FC<{ className?: string; children: ReactElement }> = ({
   return (
     <div
       className={cn(
-        "relative mb-8 flex h-60 justify-center rounded-3xl bg-white shadow-sm lg:mb-16 lg:h-[500px]",
+        "relative mb-8 flex h-60 justify-center rounded-3xl shadow-sm lg:mb-16 lg:h-[500px]",
         className,
       )}
     >

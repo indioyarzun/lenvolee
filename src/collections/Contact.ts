@@ -32,7 +32,33 @@ export const Contact: GlobalConfig = {
       },
       type: "text",
       required: true,
+      defaultValue: "",
       maxLength: 100,
+    },
+    {
+      name: "email",
+      label: {
+        fr: "Email de reception",
+      },
+      type: "text",
+      required: true,
+    },
+    {
+      name: "toSend",
+      label: {
+        fr: "Message",
+      },
+      type: "richText",
+      required: true,
+    },
+    {
+      name: "sended",
+      label: {
+        fr: "Message envoyé",
+      },
+      type: "text",
+      required: true,
+      defaultValue: "",
     },
     {
       name: "picture",

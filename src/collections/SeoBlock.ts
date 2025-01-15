@@ -11,13 +11,13 @@ const SeoBlock: Block = {
   fields: [
     {
       name: "title",
-      label: "titre",
+      label: "Titre",
       type: "text",
       defaultValue: "",
     },
     {
       name: "description",
-      label: "déscription",
+      label: "Description",
       type: "text",
       defaultValue: "",
     },

@@ -23,9 +23,7 @@ export default async function Courses({
         <div>
           <Title>{contact.title}</Title>
         </div>
-        <h2 className="my-44 py-16 text-3xl">
-          Merci pour votre message, je vous recontact rapidement
-        </h2>
+        <h2 className="my-44 py-16 text-3xl">{contact.sended}</h2>
       </div>
     </PictureParagraph>
   );

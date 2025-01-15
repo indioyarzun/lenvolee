@@ -1,8 +1,5 @@
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import {
-  lexicalEditor,
-  FixedToolbarFeature,
-} from "@payloadcms/richtext-lexical";
+import { lexicalEditor, BlocksFeature } from "@payloadcms/richtext-lexical";
 import path from "path";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
@@ -36,17 +33,14 @@ export default buildConfig({
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   email: resendAdapter({
-    defaultFromAddress: "dev@payloadcms.com",
-    defaultFromName: "Payload CMS",
+    defaultFromAddress: "contact@lenvolee-apiculture.fr",
+    defaultFromName: "lenvolee apiculture",
     apiKey: process.env.RESEND_API_KEY || "",
   }),
   globals: [Home, HoneysPage, Courses, Farming, Contact],
   collections: [Honeys, Flowers, Media, Users],
   editor: lexicalEditor({
-    features: ({ defaultFeatures }) => [
-      ...defaultFeatures,
-      FixedToolbarFeature(),
-    ],
+    features: ({ defaultFeatures }) => [...defaultFeatures],
   }),
   secret: process.env.PAYLOAD_SECRET || "",
   db: postgresAdapter({

@@ -38,7 +38,7 @@ export const getHoneys = async ({ draft }: { draft?: string }) => {
     ...honeysPage,
     picture: getPicture(honeysPage.picture),
     honeys: honeys.docs
-      .filter((honey) => honey.available)
+      .filter((honey) => honey.visible)
       .map((honey) => ({
         ...honey,
         flowers: honey.flowers?.map((flower) => flower as Flower),

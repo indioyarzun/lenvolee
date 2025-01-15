@@ -2,11 +2,14 @@ import Form from "next/form";
 
 import Title from "@/components/Title";
 import PictureParagraph from "@/components/PictureParagraph";
-import { FC, HTMLInputTypeAttribute } from "react";
 import { submitForm } from "./action";
 import { getContact } from "@/api";
 import { getSeo } from "@/utils/seo";
 import { Metadata } from "next";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import Input from "@/components/form/Input";
+import Phone from "@/components/form/Phone";
+import TextArea from "@/components/form/TextArea";
 
 export async function generateMetadata(): Promise<Metadata> {
   const contact = await getContact({});
@@ -29,27 +32,36 @@ export default async function Courses({
           <Title>{contact.title}</Title>
         </div>
         <div className="py-2">
-          Envoyer moi un email à&nbsp;
-          <a
-            className="border-b border-accent"
-            href="mailto:lenvolee.api@gmail.com"
-          >
-            lenvolee.api@gmail.com
-          </a>
-          &nbsp; ou utilisez le formulaire suivant :
+          <RichText
+            className="parent [&>p>a]:border-b [&>p>a]:border-accent"
+            data={contact.toSend}
+          />
         </div>
         <Form action={submitForm} className="flex flex-col">
           <div className="flex flex-col">
             <div className="box-content flex gap-4">
-              <Input label="Nom" id="name" placeholder="Votre nom" />
               <Input label="Prénom" id="surname" placeholder="Votre prénom" />
+              <Input label="Nom" id="name" placeholder="Votre nom" />
             </div>
-            <Input label="Email" id="mail" placeholder="Votre email" />
-            <Input
+            <div className="box-content flex gap-4">
+              <Input
+                label="Email"
+                type="email"
+                id="mail"
+                placeholder="Votre email"
+              />
+              <Phone
+                label="Téléphone"
+                type="tel"
+                pattern="^(\\+33|0)[1-9]( \\d{2}){4}$"
+                id="phone"
+                placeholder="06 ..."
+              />
+            </div>
+            <TextArea
               label="Message"
               id="message"
               placeholder="Votre message"
-              type="textarea"
             />
           </div>
           <button
@@ -63,32 +75,3 @@ export default async function Courses({
     </PictureParagraph>
   );
 }
-
-const Input: FC<{
-  label: string;
-  id: string;
-  placeholder?: string;
-  type?: HTMLInputTypeAttribute;
-}> = ({ label, id, placeholder, type = "text" }) => {
-  return (
-    <div className="flex flex-col">
-      <label htmlFor={id}>{label} :</label>
-      {type === "textarea" && (
-        <textarea
-          className="my-2 w-full bg-accent/30 p-2"
-          id={id}
-          placeholder={placeholder ?? label}
-          rows={7}
-        />
-      )}
-      {type === "text" && (
-        <input
-          className="my-2 w-full bg-accent/30 p-2"
-          id={id}
-          type={type}
-          placeholder={placeholder ?? label}
-        />
-      )}
-    </div>
-  );
-};

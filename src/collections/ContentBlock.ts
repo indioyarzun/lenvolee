@@ -11,13 +11,13 @@ const ContentBlock: Block = {
   fields: [
     {
       name: "description",
-      label: "déscription",
+      label: "Description",
       type: "richText",
       required: true,
     },
     {
       name: "picture",
-      label: "image",
+      label: "Image",
       type: "upload",
       relationTo: "media",
     },
