@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import Image from "next/image";
 import Title from "@/components/Title";
 import PageClient, { FILTER_ALL } from "./PageClient";
-import { Flower } from "@/payload-types";
 import { RefreshRouteOnSave } from "@/components/RefreshRouterOnSave";
 import { getHoneys } from "@/api";
 import { getSeo } from "@/utils/seo";
