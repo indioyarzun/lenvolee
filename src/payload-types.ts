@@ -16,9 +16,9 @@ export interface Config {
     media: Media;
     users: User;
     client: Client;
-    "payload-locked-documents": PayloadLockedDocument;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    'payload-locked-documents': PayloadLockedDocument;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
@@ -27,15 +27,9 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     client: ClientSelect<false> | ClientSelect<true>;
-    "payload-locked-documents":
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
-    "payload-preferences":
-      | PayloadPreferencesSelect<false>
-      | PayloadPreferencesSelect<true>;
-    "payload-migrations":
-      | PayloadMigrationsSelect<false>
-      | PayloadMigrationsSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: number;
@@ -58,7 +52,7 @@ export interface Config {
   };
   locale: null;
   user: User & {
-    collection: "users";
+    collection: 'users';
   };
   jobs: {
     tasks: unknown;
@@ -99,7 +93,7 @@ export interface Honey {
   flowers?: (number | Flower)[] | null;
   updatedAt: string;
   createdAt: string;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -108,7 +102,6 @@ export interface Honey {
 export interface Media {
   id: number;
   alt: string;
-  prefix: string;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -177,28 +170,28 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: "honeys";
+        relationTo: 'honeys';
         value: number | Honey;
       } | null)
     | ({
-        relationTo: "flowers";
+        relationTo: 'flowers';
         value: number | Flower;
       } | null)
     | ({
-        relationTo: "media";
+        relationTo: 'media';
         value: number | Media;
       } | null)
     | ({
-        relationTo: "users";
+        relationTo: 'users';
         value: number | User;
       } | null)
     | ({
-        relationTo: "client";
+        relationTo: 'client';
         value: number | Client;
       } | null);
   globalSlug?: string | null;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: number | User;
   };
   updatedAt: string;
@@ -211,7 +204,7 @@ export interface PayloadLockedDocument {
 export interface PayloadPreference {
   id: number;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: number | User;
   };
   key?: string | null;
@@ -270,7 +263,6 @@ export interface FlowersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
-  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -364,9 +356,9 @@ export interface Home {
     description?: string | null;
     id?: string | null;
     blockName?: string | null;
-    blockType: "Seo";
+    blockType: 'Seo';
   }[];
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -383,8 +375,8 @@ export interface PictureBlock {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -393,7 +385,7 @@ export interface PictureBlock {
   picture?: (number | null) | Media;
   id?: string | null;
   blockName?: string | null;
-  blockType: "PictureBlock";
+  blockType: 'PictureBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -411,7 +403,7 @@ export interface TableBlock {
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "TableBlock";
+  blockType: 'TableBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -429,8 +421,8 @@ export interface HoneyPage {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -442,10 +434,10 @@ export interface HoneyPage {
         description?: string | null;
         id?: string | null;
         blockName?: string | null;
-        blockType: "Seo";
+        blockType: 'Seo';
       }[]
     | null;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -464,10 +456,10 @@ export interface Course {
         description?: string | null;
         id?: string | null;
         blockName?: string | null;
-        blockType: "Seo";
+        blockType: 'Seo';
       }[]
     | null;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -486,10 +478,10 @@ export interface Farming {
         description?: string | null;
         id?: string | null;
         blockName?: string | null;
-        blockType: "Seo";
+        blockType: 'Seo';
       }[]
     | null;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -509,8 +501,8 @@ export interface Contact {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -524,10 +516,10 @@ export interface Contact {
         description?: string | null;
         id?: string | null;
         blockName?: string | null;
-        blockType: "Seo";
+        blockType: 'Seo';
       }[]
     | null;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -736,6 +728,7 @@ export interface Auth {
   [k: string]: unknown;
 }
 
-declare module "payload" {
+
+declare module 'payload' {
   export interface GeneratedTypes extends Config {}
 }
