@@ -12,8 +12,6 @@ export default function NavMobile() {
 
   const pathname = usePathname();
 
-  const currentRoute = nav.find((navData) => navData.href === pathname);
-
   const activeLinkRef = useRef<HTMLAnchorElement>(null);
 
   const [barStyle, setBarStyle] = useState({

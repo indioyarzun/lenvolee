@@ -12,8 +12,6 @@ const ACTIVE_LINK_CONST = 8;
 export default function NavDesktop() {
   const pathname = usePathname();
 
-  const currentRoute = nav.find((navData) => navData.href === pathname);
-
   const activeLinkRef = useRef<HTMLAnchorElement>(null);
   const [barStyle, setBarStyle] = useState({
     width: activeLinkRef.current?.offsetWidth ?? 0,
