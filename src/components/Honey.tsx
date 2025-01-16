@@ -98,7 +98,7 @@ export default function Honey({
                 className={cn(
                   "flex flex-1 flex-row-reverse flex-wrap-reverse items-start gap-1 overflow-hidden pb-2 text-xs font-semibold text-white transition-all",
                   {
-                    ["h-16"]: isSelected,
+                    ["h-16"]: !isSelected,
                   },
                 )}
               >

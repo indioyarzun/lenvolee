@@ -9,7 +9,7 @@ import { getHoneys } from "@/api";
 export const revalidate = 60;
 // export const experimental_ppr = true
 
-const FILTER_ALL = "toutes";
+export const FILTER_ALL = "toutes";
 
 const HoneysClient: FC<{
   honeys: Awaited<ReturnType<typeof getHoneys>>;
@@ -17,14 +17,10 @@ const HoneysClient: FC<{
 }> = ({ honeys, flowers }) => {
   const [currentFilter, setCurrentFilter] = useState(FILTER_ALL);
   const [honeySelected, setHoneySelected] = useState(NaN);
+
+  console.log("currentFilter === FILTER_ALL", currentFilter, FILTER_ALL);
   return (
     <>
-      <div
-        className={cn("transition-all", {
-          ["fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"]: honeySelected,
-        })}
-        onClick={() => setHoneySelected(NaN)}
-      />
       <div>
         <div className="mb-4 mt-8 lg:text-xl">Filtrer par fleurs :</div>
         <div className="mb-8 flex flex-wrap gap-2">

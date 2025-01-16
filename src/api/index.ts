@@ -37,6 +37,7 @@ export const getHoneys = async ({ draft }: { draft?: string }) => {
     depth: 1,
     draft: !!draft,
     limit: 100,
+    sort: ["-isAvailable", "-title"],
   });
 
   const honeysPage = await honeysPagePromise;

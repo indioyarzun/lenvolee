@@ -3,7 +3,7 @@
 import Hero from "@/components/Hero";
 import Image from "next/image";
 import Title from "@/components/Title";
-import PageClient from "./PageClient";
+import PageClient, { FILTER_ALL } from "./PageClient";
 import { Flower } from "@/payload-types";
 import { RefreshRouteOnSave } from "@/components/RefreshRouterOnSave";
 import { getHoneys } from "@/api";
@@ -29,14 +29,16 @@ export default async function Honeys({
 
   const flowersList = honeys.honeys?.reduce<string[]>((acc, honey) => {
     acc.push(
-      ...(honey.flowers?.map((flower) => (flower as Flower).name) ?? []),
+      ...(honey.flowers
+        ?.map((flower) => flower.name)
+        .sort((a, b) => (a < b ? -1 : 1)) ?? []),
     );
 
     return acc;
   }, []);
 
   const flowers = new Array(...new Set(flowersList));
-  flowers.unshift("Toutes");
+  flowers.unshift(FILTER_ALL);
 
   return (
     <>
