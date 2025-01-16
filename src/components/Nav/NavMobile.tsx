@@ -31,6 +31,7 @@ export default function NavMobile() {
   return (
     <div className="flex">
       <button
+        aria-label="Menu"
         className="z-50 mx-2 h-16 w-12"
         onClick={() => setIsDrawerOpen(!isDrawerOpen)}
       >
