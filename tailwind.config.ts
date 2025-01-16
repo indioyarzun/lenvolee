@@ -28,14 +28,12 @@ export default {
 
     animation: {
       fly: "fly 8s ease-in-out 1",
-      flyzindex: "flyzindex 8s ease-in-out 1",
+      wiggle: "wiggle 1s ease-in-out infinite",
     },
     keyframes: {
-      flyzindex: {
-        "0%": { zIndex: 0 },
-        "30%": { zIndex: 30 },
-        "86%": { zIndex: 30 },
-        "87%": { zIndex: 0 },
+      wiggle: {
+        "0%, 100%": { transform: "rotate(-3deg)" },
+        "50%": { transform: "rotate(3deg)" },
       },
       fly: {
         "0%": { opacity: "0" },

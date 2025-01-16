@@ -1,12 +1,9 @@
 import type { GlobalConfig } from "payload";
-import SeoBlock from "./SeoBlock";
-import ContentBlock from "./ContentBlock";
-import TableBlock from "./TableBlock";
+import SeoBlock from "./blocks/SeoBlock";
+import ContentBlock from "./blocks/ContentBlock";
+import TableBlock from "./blocks/TableBlock";
 
 export const Home: GlobalConfig = {
-  access: {
-    read: () => true,
-  },
   versions: {
     drafts: {
       autosave: true,

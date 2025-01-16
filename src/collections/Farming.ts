@@ -1,12 +1,9 @@
 import type { GlobalConfig } from "payload";
-import ContentBlock from "./ContentBlock";
-import SeoBlock from "./SeoBlock";
-import TableBlock from "./TableBlock";
+import ContentBlock from "./blocks/ContentBlock";
+import SeoBlock from "./blocks/SeoBlock";
+import TableBlock from "./blocks/TableBlock";
 
 export const Farming: GlobalConfig = {
-  access: {
-    read: () => true,
-  },
   versions: {
     drafts: {
       autosave: true,

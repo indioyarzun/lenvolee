@@ -68,11 +68,7 @@ export default function NavMobile() {
       >
         <div
           className={cn(
-            "absolute bottom-24 left-6 h-1 w-52 rounded transition-all duration-300",
-            {
-              "bg-primary": !currentRoute?.highlight,
-              "bg-accent": currentRoute?.highlight,
-            },
+            "absolute bottom-24 left-6 h-1 w-52 rounded bg-primary transition-all duration-300",
           )}
           style={{
             top: barStyle.top,

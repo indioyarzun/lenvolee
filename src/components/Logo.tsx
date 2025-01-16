@@ -20,18 +20,18 @@ const Logo: FC<{
             className="h-full w-auto object-contain"
             src={withSub ? logoSub : logo}
             alt="logo lenvolé"
-            sizes="(max-width: 1024px) 100vw, 1024px"
+            sizes="250px"
             priority
           />
         </div>
-        <div className="absolute h-full animate-flyzindex">
+        <div className="absolute h-full">
           <Image
             className={cn("h-full w-auto object-contain", {
               "animate-fly": withAnimate,
             })}
             src={nuee}
             alt="nuee lenvolé"
-            sizes="(max-width: 1024px) 100vw, 1024px"
+            sizes="250px"
             priority
           />
         </div>

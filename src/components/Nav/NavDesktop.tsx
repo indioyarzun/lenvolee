@@ -31,11 +31,7 @@ export default function NavDesktop() {
     <nav className="relative z-30 flex h-16 self-center">
       <div
         className={cn(
-          "absolute bottom-2 h-1 rounded transition-all duration-300",
-          {
-            "bg-accent": !currentRoute?.highlight,
-            "bg-primary": currentRoute?.highlight,
-          },
+          "absolute bottom-2 h-1 rounded bg-accent transition-all duration-300",
         )}
         style={{
           width: barStyle.width - ACTIVE_LINK_CONST * 2,
@@ -50,7 +46,8 @@ export default function NavDesktop() {
           className={cn(
             "flex items-center justify-center whitespace-nowrap px-6 font-semibold",
             {
-              "rounded-lg bg-accent": data.highlight,
+              "rounded-lg bg-accent bg-accent/90 shadow-lg transition-transform duration-300 hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent active:scale-95":
+                data.highlight,
             },
           )}
         >

@@ -1,15 +1,13 @@
 import type { CollectionConfig } from "payload";
 
 export const Honeys: CollectionConfig = {
-  access: {
-    read: () => true,
-  },
   versions: {
     drafts: {
       autosave: true,
     },
   },
   admin: {
+    listSearchableFields: ["title"],
     livePreview: {
       url: (data) => {
         const url = new URL(data.req.headers.get("referer") ?? "");

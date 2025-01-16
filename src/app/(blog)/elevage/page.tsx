@@ -6,6 +6,7 @@ import { getFarming } from "@/api";
 import { getSeo } from "@/utils/seo";
 import { Metadata } from "next";
 import Block from "@/components/Block";
+import Calendar from "@/components/Calendar";
 
 export async function generateMetadata(): Promise<Metadata> {
   const farming = await getFarming({});
@@ -48,6 +49,7 @@ export default async function Farming({
           </PictureParagraph>
         );
       })}
+      <Calendar data={farming.calendar} />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import { lexicalEditor, BlocksFeature } from "@payloadcms/richtext-lexical";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
@@ -15,9 +15,11 @@ import { Courses } from "./collections/Courses";
 import { Contact } from "./collections/Contact";
 import { Farming } from "./collections/Farming";
 import { HoneysPage } from "./collections/HoneysPage";
+import { Clients } from "./collections/Clients";
 
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import { resendAdapter } from "@payloadcms/email-resend";
+import { Calendar } from "./collections/Calendar";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -37,8 +39,8 @@ export default buildConfig({
     defaultFromName: "lenvolee apiculture",
     apiKey: process.env.RESEND_API_KEY || "",
   }),
-  globals: [Home, HoneysPage, Courses, Farming, Contact],
-  collections: [Honeys, Flowers, Media, Users],
+  globals: [Home, HoneysPage, Courses, Farming, Contact, Calendar],
+  collections: [Honeys, Flowers, Media, Users, Clients],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [...defaultFeatures],
   }),

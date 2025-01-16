@@ -65,7 +65,7 @@ export default async function Courses({
             />
           </div>
           <button
-            className="mt-4 flex items-center justify-center self-start rounded-lg bg-accent p-4"
+            className="mt-4 flex items-center justify-center self-start rounded-lg bg-accent bg-accent/90 p-4 shadow-lg transition-transform duration-300 hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent active:scale-95"
             type="submit"
           >
             Envoyer !

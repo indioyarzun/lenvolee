@@ -15,6 +15,7 @@ export interface Config {
     flowers: Flower;
     media: Media;
     users: User;
+    client: Client;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -25,6 +26,7 @@ export interface Config {
     flowers: FlowersSelect<false> | FlowersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    client: ClientSelect<false> | ClientSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -38,6 +40,7 @@ export interface Config {
     course: Course;
     farming: Farming;
     contact: Contact;
+    calendar: Calendar;
   };
   globalsSelect: {
     home: HomeSelect<false> | HomeSelect<true>;
@@ -45,6 +48,7 @@ export interface Config {
     course: CourseSelect<false> | CourseSelect<true>;
     farming: FarmingSelect<false> | FarmingSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
+    calendar: CalendarSelect<false> | CalendarSelect<true>;
   };
   locale: null;
   user: User & {
@@ -140,6 +144,27 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "client".
+ */
+export interface Client {
+  id: number;
+  surname: string;
+  name: string;
+  email?: string | null;
+  phone?: string | null;
+  comment?: string | null;
+  commandes?:
+    | {
+        date: string;
+        quantity: number;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -160,6 +185,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: number | User;
+      } | null)
+    | ({
+        relationTo: 'client';
+        value: number | Client;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -262,6 +291,26 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "client_select".
+ */
+export interface ClientSelect<T extends boolean = true> {
+  surname?: T;
+  name?: T;
+  email?: T;
+  phone?: T;
+  comment?: T;
+  commandes?:
+    | T
+    | {
+        date?: T;
+        quantity?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -478,6 +527,20 @@ export interface Contact {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "calendar".
+ */
+export interface Calendar {
+  id: number;
+  visible: boolean;
+  title: string;
+  startDate: string;
+  endDate: string;
+  productionPerWeek: number;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home_select".
  */
 export interface HomeSelect<T extends boolean = true> {
@@ -641,6 +704,20 @@ export interface ContactSelect<T extends boolean = true> {
             };
       };
   _status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "calendar_select".
+ */
+export interface CalendarSelect<T extends boolean = true> {
+  visible?: T;
+  title?: T;
+  startDate?: T;
+  endDate?: T;
+  productionPerWeek?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

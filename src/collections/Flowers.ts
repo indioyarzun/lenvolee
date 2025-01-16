@@ -1,9 +1,6 @@
 import type { CollectionConfig } from "payload";
 
 export const Flowers: CollectionConfig = {
-  access: {
-    read: () => true,
-  },
   versions: {
     maxPerDoc: 10,
   },

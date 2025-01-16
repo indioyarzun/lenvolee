@@ -1,10 +1,7 @@
 import type { GlobalConfig } from "payload";
-import SeoBlock from "./SeoBlock";
+import SeoBlock from "./blocks/SeoBlock";
 
 export const Contact: GlobalConfig = {
-  access: {
-    read: () => true,
-  },
   versions: {
     drafts: {
       autosave: true,
