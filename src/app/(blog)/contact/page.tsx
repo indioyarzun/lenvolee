@@ -33,7 +33,7 @@ export default async function Courses({
         </div>
         <div className="py-2">
           <RichText
-            className="parent [&>p>a]:border-b [&>p>a]:border-accent"
+            className="parent [&>p>a]:text-nowrap [&>p>a]:border-b [&>p>a]:border-accent"
             data={contact.toSend}
           />
         </div>

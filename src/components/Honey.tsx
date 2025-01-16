@@ -98,11 +98,11 @@ export default function Honey({
                 className={cn(
                   "flex flex-1 flex-row-reverse flex-wrap-reverse items-start gap-1 overflow-hidden pb-2 text-xs font-semibold text-white transition-all",
                   {
-                    ["h-16"]: !isSelected,
+                    ["h-16"]: isSelected,
                   },
                 )}
               >
-                {!isSelected && flowers.length > 3 && (
+                {!isSelected && flowers.length > 4 && (
                   <span className="rounded-xl bg-secondary p-1 px-2 align-middle">
                     ...
                   </span>
