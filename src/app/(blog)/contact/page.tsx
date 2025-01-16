@@ -40,8 +40,13 @@ export default async function Courses({
         <Form action={submitForm} className="flex flex-col">
           <div className="flex flex-col">
             <div className="box-content flex gap-4">
-              <Input label="Prénom" id="surname" placeholder="Votre prénom" />
-              <Input label="Nom" id="name" placeholder="Votre nom" />
+              <Input
+                label="Prénom"
+                id="surname"
+                placeholder="Votre prénom"
+                required
+              />
+              <Input label="Nom" id="name" placeholder="Votre nom" required />
             </div>
             <div className="box-content flex gap-4">
               <Input
@@ -49,6 +54,7 @@ export default async function Courses({
                 type="email"
                 id="mail"
                 placeholder="Votre email"
+                required
               />
               <Phone
                 label="Téléphone"
