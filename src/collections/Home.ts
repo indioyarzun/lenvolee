@@ -1,5 +1,7 @@
 import type { GlobalConfig } from "payload";
 import SeoBlock from "./SeoBlock";
+import ContentBlock from "./ContentBlock";
+import TableBlock from "./TableBlock";
 
 export const Home: GlobalConfig = {
   access: {
@@ -32,17 +34,24 @@ export const Home: GlobalConfig = {
       required: true,
     },
     {
-      name: "description",
-      label: "Description",
-      type: "richText",
-      required: true,
-    },
-    {
       name: "picture",
       label: "Image",
       type: "upload",
       relationTo: "media",
       required: true,
+    },
+    {
+      name: "content",
+      labels: {
+        singular: {
+          fr: "Bloc de contenu",
+        },
+        plural: {
+          fr: "Blocs de contenu",
+        },
+      },
+      type: "blocks",
+      blocks: [ContentBlock, TableBlock],
     },
     {
       name: "seo",

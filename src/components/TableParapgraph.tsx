@@ -2,7 +2,7 @@ import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { FC, ReactElement } from "react";
 
-const PictureParagraph: FC<{
+const TableParagraph: FC<{
   src: string;
   alt: string;
   position?: "left" | "right";
@@ -54,4 +54,4 @@ const ChildrenWrapper: FC<{ fullWidth: boolean; children: ReactElement }> = ({
   );
 };
 
-export default PictureParagraph;
+export default TableParagraph;

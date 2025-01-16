@@ -15,6 +15,10 @@ export const getHome = async ({ draft }: { draft?: string }) => {
   return {
     ...home,
     picture: getPicture(home.picture),
+    content: home.content?.map((content) => ({
+      ...content,
+      picture: getPicture(content.picture),
+    })),
   };
 };
 
@@ -41,7 +45,7 @@ export const getHoneys = async ({ draft }: { draft?: string }) => {
       .filter((honey) => honey.visible)
       .map((honey) => ({
         ...honey,
-        flowers: honey.flowers?.map((flower) => flower as Flower),
+        flowers: honey.flowers?.reverse().map((flower) => flower as Flower),
         picture: getPicture(honey.picture),
       })),
   };
@@ -69,19 +73,21 @@ export const getCourses = async ({ draft }: { draft?: string }) => {
 export const getFarming = async ({ draft }: { draft?: string }) => {
   const payload = await getPayload({ config });
 
-  const courses = await payload.findGlobal({
+  const farming = await payload.findGlobal({
     slug: "farming",
     depth: 1,
     draft: !!draft,
   });
 
   return {
-    ...courses,
-    picture: getPicture(courses.picture),
-    content: courses.content?.map((content) => ({
-      ...content,
-      picture: getPicture(content.picture),
-    })),
+    ...farming,
+    picture: getPicture(farming.picture),
+    content: farming.content?.map((content) => {
+      return {
+        ...content,
+        picture: getPicture(content.picture),
+      };
+    }),
   };
 };
 

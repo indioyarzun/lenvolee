@@ -1,6 +1,7 @@
 import type { GlobalConfig } from "payload";
 import ContentBlock from "./ContentBlock";
 import SeoBlock from "./SeoBlock";
+import TableBlock from "./TableBlock";
 
 export const Courses: GlobalConfig = {
   access: {
@@ -55,7 +56,7 @@ export const Courses: GlobalConfig = {
         },
       },
       type: "blocks",
-      blocks: [ContentBlock],
+      blocks: [ContentBlock, TableBlock],
     },
     {
       name: "seo",

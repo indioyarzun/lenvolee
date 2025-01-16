@@ -1,6 +1,7 @@
 import type { GlobalConfig } from "payload";
 import ContentBlock from "./ContentBlock";
 import SeoBlock from "./SeoBlock";
+import TableBlock from "./TableBlock";
 
 export const Farming: GlobalConfig = {
   access: {
@@ -46,16 +47,11 @@ export const Farming: GlobalConfig = {
     },
     {
       name: "content",
-      labels: {
-        singular: {
-          fr: "Bloc de contenu",
-        },
-        plural: {
-          fr: "Blocs de contenu",
-        },
+      label: {
+        fr: "Blocs de contenu",
       },
       type: "blocks",
-      blocks: [ContentBlock],
+      blocks: [ContentBlock, TableBlock],
     },
     {
       name: "seo",

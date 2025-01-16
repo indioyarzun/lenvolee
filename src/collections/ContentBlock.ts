@@ -1,13 +1,15 @@
 import { Block } from "payload";
 
-const ContentBlock: Block = {
-  slug: "Content",
+const PictureBlock: Block = {
+  slug: "PictureBlock",
   labels: {
-    singular: "Contenu",
-    plural: "Contenus",
+    singular: "Texte et photo",
+    plural: "Textes et photos",
   },
   imageURL: "/icons/text.svg",
-  imageAltText: "Contenu",
+  imageAltText: "Texte et photo",
+  interfaceName: "PictureBlock",
+
   fields: [
     {
       name: "description",
@@ -24,4 +26,4 @@ const ContentBlock: Block = {
   ],
 };
 
-export default ContentBlock;
+export default PictureBlock;

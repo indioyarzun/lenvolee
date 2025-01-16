@@ -3,10 +3,10 @@ import Image from "next/image";
 import Title from "@/components/Title";
 import PictureParagraph from "@/components/PictureParagraph";
 import { getCourses } from "@/api";
-import { RichText } from "@payloadcms/richtext-lexical/react";
 import { RefreshRouteOnSave } from "@/components/RefreshRouterOnSave";
 import { Metadata } from "next";
 import { getSeo } from "@/utils/seo";
+import Block from "@/components/Block";
 
 export async function generateMetadata(): Promise<Metadata> {
   const courses = await getCourses({});
@@ -45,7 +45,7 @@ export default async function Courses({
           src={content.picture?.url ?? ""}
           alt={content.picture?.alt}
         >
-          <RichText data={content.description} />
+          <Block content={content} />
         </PictureParagraph>
       ))}
     </>

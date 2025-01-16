@@ -302,6 +302,24 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Home {
   id: number;
   title: string;
+  picture: number | Media;
+  content?: (PictureBlock | TableBlock)[] | null;
+  seo: {
+    title?: string | null;
+    description?: string | null;
+    id?: string | null;
+    blockName?: string | null;
+    blockType: 'Seo';
+  }[];
+  _status?: ('draft' | 'published') | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PictureBlock".
+ */
+export interface PictureBlock {
   description: {
     root: {
       type: string;
@@ -317,17 +335,28 @@ export interface Home {
     };
     [k: string]: unknown;
   };
-  picture: number | Media;
-  seo: {
-    title?: string | null;
-    description?: string | null;
-    id?: string | null;
-    blockName?: string | null;
-    blockType: 'Seo';
-  }[];
-  _status?: ('draft' | 'published') | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
+  picture?: (number | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'PictureBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TableBlock".
+ */
+export interface TableBlock {
+  picture?: (number | null) | Media;
+  lines?:
+    | {
+        left: string;
+        right: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'TableBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -373,29 +402,7 @@ export interface Course {
   id: number;
   title: string;
   picture: number | Media;
-  content?:
-    | {
-        description: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        };
-        picture?: (number | null) | Media;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'Content';
-      }[]
-    | null;
+  content?: (PictureBlock | TableBlock)[] | null;
   seo?:
     | {
         title?: string | null;
@@ -417,29 +424,7 @@ export interface Farming {
   id: number;
   title: string;
   picture: number | Media;
-  content?:
-    | {
-        description: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        };
-        picture?: (number | null) | Media;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'Content';
-      }[]
-    | null;
+  content?: (PictureBlock | TableBlock)[] | null;
   seo?:
     | {
         title?: string | null;
@@ -497,8 +482,13 @@ export interface Contact {
  */
 export interface HomeSelect<T extends boolean = true> {
   title?: T;
-  description?: T;
   picture?: T;
+  content?:
+    | T
+    | {
+        PictureBlock?: T | PictureBlockSelect<T>;
+        TableBlock?: T | TableBlockSelect<T>;
+      };
   seo?:
     | T
     | {
@@ -515,6 +505,33 @@ export interface HomeSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PictureBlock_select".
+ */
+export interface PictureBlockSelect<T extends boolean = true> {
+  description?: T;
+  picture?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TableBlock_select".
+ */
+export interface TableBlockSelect<T extends boolean = true> {
+  picture?: T;
+  lines?:
+    | T
+    | {
+        left?: T;
+        right?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -551,14 +568,8 @@ export interface CourseSelect<T extends boolean = true> {
   content?:
     | T
     | {
-        Content?:
-          | T
-          | {
-              description?: T;
-              picture?: T;
-              id?: T;
-              blockName?: T;
-            };
+        PictureBlock?: T | PictureBlockSelect<T>;
+        TableBlock?: T | TableBlockSelect<T>;
       };
   seo?:
     | T
@@ -587,14 +598,8 @@ export interface FarmingSelect<T extends boolean = true> {
   content?:
     | T
     | {
-        Content?:
-          | T
-          | {
-              description?: T;
-              picture?: T;
-              id?: T;
-              blockName?: T;
-            };
+        PictureBlock?: T | PictureBlockSelect<T>;
+        TableBlock?: T | TableBlockSelect<T>;
       };
   seo?:
     | T

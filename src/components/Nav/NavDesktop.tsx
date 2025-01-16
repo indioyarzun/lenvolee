@@ -28,7 +28,7 @@ export default function NavDesktop() {
   }, [pathname]);
 
   return (
-    <nav className="relative z-30 flex">
+    <nav className="relative z-30 flex h-16 self-center">
       <div
         className={cn(
           "absolute bottom-2 h-1 rounded transition-all duration-300",
@@ -48,7 +48,7 @@ export default function NavDesktop() {
           href={data.href}
           ref={pathname === data.href ? activeLinkRef : null}
           className={cn(
-            "flex items-center justify-center whitespace-nowrap px-6",
+            "flex items-center justify-center whitespace-nowrap px-6 font-semibold",
             {
               "rounded-lg bg-accent": data.highlight,
             },

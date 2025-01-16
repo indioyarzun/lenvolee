@@ -3,9 +3,9 @@ import Image from "next/image";
 import Title from "@/components/Title";
 import PictureParagraph from "@/components/PictureParagraph";
 import { getFarming } from "@/api";
-import { RichText } from "@payloadcms/richtext-lexical/react";
 import { getSeo } from "@/utils/seo";
 import { Metadata } from "next";
+import Block from "@/components/Block";
 
 export async function generateMetadata(): Promise<Metadata> {
   const farming = await getFarming({});
@@ -36,16 +36,18 @@ export default async function Farming({
       </Hero>
       <Title>{farming.title}</Title>
 
-      {farming.content?.map((content, index) => (
-        <PictureParagraph
-          position={index % 2 ? "right" : "left"}
-          key={content.id}
-          src={content.picture?.url ?? ""}
-          alt={content.picture?.alt}
-        >
-          <RichText data={content.description} />
-        </PictureParagraph>
-      ))}
+      {farming.content?.map((content, index) => {
+        return (
+          <PictureParagraph
+            position={index % 2 ? "right" : "left"}
+            key={content.id}
+            src={content.picture?.url ?? ""}
+            alt={content.picture?.alt}
+          >
+            <Block content={content} />
+          </PictureParagraph>
+        );
+      })}
     </>
   );
 }

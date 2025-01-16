@@ -1,11 +1,11 @@
-import Logo from "@/components/Logo";
 import Hero from "@/components/Hero";
 import PictureParagraph from "@/components/PictureParagraph";
 
 import Title from "@/components/Title";
-import { RichText } from "@payloadcms/richtext-lexical/react";
 import { RefreshRouteOnSave } from "@/components/RefreshRouterOnSave";
 import { getHome } from "@/api";
+import Image from "next/image";
+import Block from "@/components/Block";
 
 export default async function Home({
   searchParams,
@@ -19,22 +19,29 @@ export default async function Home({
   return (
     <>
       <RefreshRouteOnSave />
-      <Hero>
-        <Logo
-          withSub
-          withAnimate
-          className="items-center justify-center"
-          logoClassName="w-full h-60 lg:h-96"
+      <Hero className="overflow-hidden">
+        <Image
+          className="object-cover"
+          src={home.picture.url ?? ""}
+          alt={home.picture.alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 1024px"
         />
       </Hero>
       <Title>{home.title}</Title>
-      <PictureParagraph
-        src={home.picture.url ?? ""}
-        alt={home.picture.alt}
-        position="right"
-      >
-        <RichText data={home.description} />
-      </PictureParagraph>
+
+      {home.content?.map((content, index) => {
+        return (
+          <PictureParagraph
+            position={index % 2 ? "right" : "left"}
+            key={content.id}
+            src={content.picture?.url ?? ""}
+            alt={content.picture?.alt}
+          >
+            <Block content={content} />
+          </PictureParagraph>
+        );
+      })}
     </>
   );
 }
