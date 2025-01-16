@@ -8,6 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const contact = await getContact({});
   return await getSeo(contact);
 }
+export const dynamic = "force-static";
 
 export default async function Courses({
   searchParams,

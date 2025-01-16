@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return await getSeo(farming);
 }
 
-export const revalidate = 60;
+export const dynamic = "force-static";
 
 export default async function Farming({
   searchParams,

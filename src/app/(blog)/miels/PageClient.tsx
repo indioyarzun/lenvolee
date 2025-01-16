@@ -5,10 +5,6 @@ import { FC, useState } from "react";
 import { cn } from "@/utils/cn";
 import { getHoneys } from "@/api";
 
-// export const dynamic = 'force-dynamic';
-export const revalidate = 60;
-// export const experimental_ppr = true
-
 export const FILTER_ALL = "toutes";
 
 const HoneysClient: FC<{
