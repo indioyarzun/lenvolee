@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getHome } from "@/api";
+import { Analytics } from "@vercel/analytics/react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default async function RootLayout({
           </div>
         </div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
