@@ -9,18 +9,12 @@ import Block from "@/components/Block";
 import Calendar from "@/components/Calendar";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const farming = await getFarming({});
+  const farming = await getFarming();
   return await getSeo(farming);
 }
 
-export default async function Farming({
-  searchParams,
-}: {
-  searchParams: Promise<{ draft: string }>;
-}) {
-  const { draft } = await searchParams;
-
-  const farming = await getFarming({ draft });
+export default async function Farming() {
+  const farming = await getFarming();
 
   return (
     <>

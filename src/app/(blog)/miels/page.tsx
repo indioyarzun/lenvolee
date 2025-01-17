@@ -11,17 +11,11 @@ import { Metadata } from "next";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const honeys = await getHoneys({});
+  const honeys = await getHoneys();
   return await getSeo(honeys);
 }
-export default async function Honeys({
-  searchParams,
-}: {
-  searchParams: Promise<{ draft: string }>;
-}) {
-  const { draft } = await searchParams;
-
-  const honeys = await getHoneys({ draft });
+export default async function Honeys() {
+  const honeys = await getHoneys();
 
   const flowersList = honeys.honeys?.reduce<string[]>((acc, honey) => {
     acc.push(

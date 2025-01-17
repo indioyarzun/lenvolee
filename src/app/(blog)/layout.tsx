@@ -14,7 +14,7 @@ const poppins = Poppins({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const home = await getHome({});
+  const home = await getHome();
   return {
     title: home.seo[0]?.title ?? "",
     description: home.seo[0]?.description ?? "",

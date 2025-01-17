@@ -4,13 +4,12 @@ import { Flower } from "@/payload-types";
 import { getPicture } from "@/utils/vercelBlob";
 import { generateCalendar } from "@/business/calendar";
 
-export const getHome = async ({ draft }: { draft?: string }) => {
+export const getHome = async () => {
   const payload = await getPayload({ config });
 
   const home = await payload.findGlobal({
     slug: "home",
     depth: 1,
-    draft: !!draft,
   });
 
   return {
@@ -23,21 +22,19 @@ export const getHome = async ({ draft }: { draft?: string }) => {
   };
 };
 
-export const getHoneys = async ({ draft }: { draft?: string }) => {
+export const getHoneys = async () => {
   const payload = await getPayload({ config });
-
-  const honeysPagePromise = payload.findGlobal({
-    slug: "honeyPage",
-    depth: 1,
-    draft: !!draft,
-  });
 
   const honeysPromise = payload.find({
     collection: "honeys",
     depth: 1,
-    draft: !!draft,
     limit: 100,
     sort: ["-isAvailable", "-title"],
+  });
+
+  const honeysPagePromise = payload.findGlobal({
+    slug: "honeyPage",
+    depth: 1,
   });
 
   const honeysPage = await honeysPagePromise;
@@ -56,13 +53,12 @@ export const getHoneys = async ({ draft }: { draft?: string }) => {
   };
 };
 
-export const getCourses = async ({ draft }: { draft?: string }) => {
+export const getCourses = async () => {
   const payload = await getPayload({ config });
 
   const courses = await payload.findGlobal({
     slug: "course",
     depth: 1,
-    draft: !!draft,
   });
 
   return {
@@ -75,26 +71,23 @@ export const getCourses = async ({ draft }: { draft?: string }) => {
   };
 };
 
-export const getFarming = async ({ draft }: { draft?: string }) => {
+export const getFarming = async () => {
   const payload = await getPayload({ config });
 
   const clientsPromise = payload.find({
     collection: "client",
     depth: 1,
     limit: 1000,
-    draft: !!draft,
   });
 
   const farmingPromise = payload.findGlobal({
     slug: "farming",
     depth: 1,
-    draft: !!draft,
   });
 
   const calendarPromise = payload.findGlobal({
     slug: "calendar",
     depth: 1,
-    draft: !!draft,
   });
 
   const farming = await farmingPromise;
@@ -117,13 +110,12 @@ export const getFarming = async ({ draft }: { draft?: string }) => {
   };
 };
 
-export const getContact = async ({ draft }: { draft?: string }) => {
+export const getContact = async () => {
   const payload = await getPayload({ config });
 
   const contact = await payload.findGlobal({
     slug: "contact",
     depth: 1,
-    draft: !!draft,
   });
 
   return {

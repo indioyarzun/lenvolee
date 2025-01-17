@@ -9,18 +9,12 @@ import { getSeo } from "@/utils/seo";
 import Block from "@/components/Block";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const courses = await getCourses({});
+  const courses = await getCourses();
   return await getSeo(courses);
 }
 
-export default async function Courses({
-  searchParams,
-}: {
-  searchParams: Promise<{ draft: string }>;
-}) {
-  const { draft } = await searchParams;
-
-  const courses = await getCourses({ draft });
+export default async function Courses() {
+  const courses = await getCourses();
 
   return (
     <>

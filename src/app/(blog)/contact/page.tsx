@@ -12,17 +12,11 @@ import Phone from "@/components/form/Phone";
 import TextArea from "@/components/form/TextArea";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const contact = await getContact({});
+  const contact = await getContact();
   return await getSeo(contact);
 }
-export default async function Courses({
-  searchParams,
-}: {
-  searchParams: Promise<{ draft: string }>;
-}) {
-  const { draft } = await searchParams;
-
-  const contact = await getContact({ draft });
+export default async function Courses() {
+  const contact = await getContact();
 
   return (
     <PictureParagraph src={contact.picture.url ?? ""} alt={contact.picture.alt}>

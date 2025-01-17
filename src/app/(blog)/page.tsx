@@ -7,14 +7,8 @@ import { getHome } from "@/api";
 import Image from "next/image";
 import Block from "@/components/Block";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ draft: string }>;
-}) {
-  const { draft } = await searchParams;
-
-  const home = await getHome({ draft });
+export default async function Home() {
+  const home = await getHome();
 
   return (
     <>

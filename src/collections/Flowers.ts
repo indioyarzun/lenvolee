@@ -1,9 +1,6 @@
 import type { CollectionConfig } from "payload";
 
 export const Flowers: CollectionConfig = {
-  versions: {
-    maxPerDoc: 10,
-  },
   admin: {
     useAsTitle: "name",
   },
