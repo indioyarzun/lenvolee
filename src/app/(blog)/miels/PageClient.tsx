@@ -19,7 +19,7 @@ const HoneysClient: FC<{
     <>
       <div>
         <div className="mb-4 mt-8 lg:text-xl">Filtrer par fleurs :</div>
-        <div className="mb-8 flex flex-wrap gap-2">
+        <div className="mb-8 flex flex-wrap gap-2 whitespace-nowrap">
           {flowers.map((flower) => (
             <div
               className={cn(
