@@ -14,6 +14,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const honeys = await getHoneys();
   return await getSeo(honeys);
 }
+export const dynamic = "force-dynamic";
+
 export default async function Honeys() {
   const honeys = await getHoneys();
 

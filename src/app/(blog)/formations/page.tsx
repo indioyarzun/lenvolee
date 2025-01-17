@@ -13,6 +13,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return await getSeo(courses);
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function Courses() {
   const courses = await getCourses();
 

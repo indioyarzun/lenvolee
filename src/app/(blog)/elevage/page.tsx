@@ -12,6 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const farming = await getFarming();
   return await getSeo(farming);
 }
+export const dynamic = "force-dynamic";
 
 export default async function Farming() {
   const farming = await getFarming();
