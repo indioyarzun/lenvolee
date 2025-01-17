@@ -12,9 +12,17 @@ const Calendar: FC<{
     return null;
   }
   return (
-    <div>
-      <Title>{data.calendar.title}</Title>
-      <div className="mt-16 flex flex-wrap gap-8">
+    <div className="">
+      <div className="flex flex-col gap-6">
+        <Title>{data.calendar.title}</Title>
+        <Link
+          href={routes.contact}
+          className="mt-8 self-start rounded-lg bg-accent/90 p-4 px-6 py-3 text-xl shadow-lg transition-transform duration-300 hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent active:scale-95 lg:mt-0"
+        >
+          Réserver !
+        </Link>
+      </div>
+      <div className="mt-8 flex flex-wrap gap-8">
         {Object.entries(data.calendarWithQuantities).map(
           ([month, monthWithQuantities]) => {
             return (
@@ -45,12 +53,6 @@ const Calendar: FC<{
             );
           },
         )}
-        <Link
-          href={routes.contact}
-          className="self-center rounded-lg bg-accent/90 p-4 px-6 py-3 text-xl shadow-lg transition-transform duration-300 hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent active:scale-95"
-        >
-          Réserver !
-        </Link>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const Block: FC<{
   }
   if (content.blockType === "TableBlock") {
     return (
-      <div className="flex flex-col">
+      <div key={content.id} className="flex flex-col">
         {content.lines?.map((line) => {
           return (
             <>

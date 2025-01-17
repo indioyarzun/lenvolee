@@ -44,7 +44,7 @@ export default function NavDesktop() {
           className={cn(
             "flex items-center justify-center whitespace-nowrap px-6 font-semibold",
             {
-              "rounded-lg bg-accent bg-accent/90 shadow-lg transition-transform duration-300 hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent active:scale-95":
+              "ml-6 rounded-lg bg-accent bg-accent/90 shadow-lg transition-transform duration-300 hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent active:scale-95":
                 data.highlight,
             },
           )}
