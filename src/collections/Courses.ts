@@ -4,20 +4,6 @@ import SeoBlock from "./blocks/SeoBlock";
 import TableBlock from "./blocks/TableBlock";
 
 export const Courses: GlobalConfig = {
-  versions: {
-    drafts: {
-      autosave: true,
-    },
-  },
-  admin: {
-    livePreview: {
-      url: (data) => {
-        const url = new URL(data.req.headers.get("referer") ?? "");
-
-        return `${url.origin}/formations?draft=true`;
-      },
-    },
-  },
   slug: "course",
   label: {
     fr: "Formation",

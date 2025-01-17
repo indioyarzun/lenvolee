@@ -2,20 +2,6 @@ import type { GlobalConfig } from "payload";
 import SeoBlock from "./blocks/SeoBlock";
 
 export const HoneysPage: GlobalConfig = {
-  versions: {
-    drafts: {
-      autosave: true,
-    },
-  },
-  admin: {
-    livePreview: {
-      url: (data) => {
-        const url = new URL(data.req.headers.get("referer") ?? "");
-
-        return `${url.origin}/miels?draft=true`;
-      },
-    },
-  },
   slug: "honeyPage",
   label: {
     fr: "Miels",

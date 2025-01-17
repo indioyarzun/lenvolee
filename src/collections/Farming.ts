@@ -4,20 +4,6 @@ import SeoBlock from "./blocks/SeoBlock";
 import TableBlock from "./blocks/TableBlock";
 
 export const Farming: GlobalConfig = {
-  versions: {
-    drafts: {
-      autosave: true,
-    },
-  },
-  admin: {
-    livePreview: {
-      url: (data) => {
-        const url = new URL(data.req.headers.get("referer") ?? "");
-
-        return `${url.origin}/elevage?draft=true`;
-      },
-    },
-  },
   slug: "farming",
   label: {
     fr: "Élevage",

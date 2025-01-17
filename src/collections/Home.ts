@@ -4,20 +4,6 @@ import ContentBlock from "./blocks/ContentBlock";
 import TableBlock from "./blocks/TableBlock";
 
 export const Home: GlobalConfig = {
-  versions: {
-    drafts: {
-      autosave: true,
-    },
-  },
-  admin: {
-    livePreview: {
-      url: (data) => {
-        const url = new URL(data.req.headers.get("referer") ?? "");
-
-        return `${url.origin}?draft=true`;
-      },
-    },
-  },
   slug: "home",
   label: {
     fr: "Accueil",
