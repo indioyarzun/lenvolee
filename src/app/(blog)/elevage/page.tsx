@@ -33,7 +33,7 @@ export default async function Farming() {
       {farming.content?.map((content, index) => {
         return (
           <PictureParagraph
-            position={index % 2 ? "right" : "left"}
+            position={index % 2 ? "left" : "right"}
             key={content.id}
             src={content.picture?.url ?? ""}
             alt={content.picture?.alt}

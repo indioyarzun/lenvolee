@@ -34,7 +34,7 @@ export default async function Courses() {
       <Title>{courses.title}</Title>
       {courses.content?.map((content, index) => (
         <PictureParagraph
-          position={index % 2 ? "right" : "left"}
+          position={index % 2 ? "left" : "right"}
           key={content.id}
           src={content.picture?.url ?? ""}
           alt={content.picture?.alt}
