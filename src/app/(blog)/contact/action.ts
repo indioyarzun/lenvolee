@@ -8,7 +8,7 @@ import { getContact } from "@/api";
 
 export const submitForm = async (formData: FormData) => {
   const payload = await getPayload({ config });
-  const contact = await getContact({});
+  const contact = await getContact();
 
   await payload.sendEmail({
     to: contact.email,
