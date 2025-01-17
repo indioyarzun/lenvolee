@@ -7,8 +7,6 @@ import { getHome } from "@/api";
 import Image from "next/image";
 import Block from "@/components/Block";
 
-export const dynamic = "force-static";
-
 export default async function Home({
   searchParams,
 }: {

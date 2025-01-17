@@ -13,8 +13,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return await getSeo(farming);
 }
 
-export const dynamic = "force-static";
-
 export default async function Farming({
   searchParams,
 }: {

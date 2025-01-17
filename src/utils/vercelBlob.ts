@@ -8,18 +8,12 @@ export const getUrl = (token: string) => {
   return `https://${getDomain(token)}.public.blob.vercel-storage.com`;
 };
 
-export const getPicture = (_picture?: number | Media | null) => {
-  // let picture: Media;
-  // if (!_picture) {
-  //   picture = {
-  //     url: "",
-  //     alt: "",
-  //   } as Media;
-  // } else {
-  //   picture = _picture as Media;
-  // }
-  // picture.url = `${getUrl(process.env.BLOB_READ_WRITE_TOKEN ?? "")}/${picture?.prefix}/${picture?.filename}`;
+export const getPicture = (_picture?: number | Media | null): Media => {
+  const picture = _picture as Media;
+  if (!picture || typeof picture === "number") {
+    return picture;
+  }
+  picture!.url = `${getUrl(process.env.BLOB_READ_WRITE_TOKEN ?? "")}/${picture?.prefix}/${picture?.filename}`;
 
-  // return picture;
-  return _picture as Media;
+  return picture;
 };

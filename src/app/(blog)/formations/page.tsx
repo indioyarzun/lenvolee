@@ -13,9 +13,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return await getSeo(courses);
 }
 
-export const revalidate = 60;
-export const dynamic = "force-static";
-
 export default async function Courses({
   searchParams,
 }: {
